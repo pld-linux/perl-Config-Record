@@ -6,7 +6,7 @@
 %define	pdir	Config
 %define	pnam	Record
 Summary:	Config::Record - Configuration file access
-#Summary(pl):	
+#Summary(pl):
 Name:		perl-Config-Record
 Version:	1.1.2
 Release:	0.1
@@ -24,32 +24,13 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This module provides an API for loading and saving of simple configuration
-file records. Entries in the configuration file are essentially key,value 
-pairs, with the key and values separated by a single equals symbol. The 
-key consists only of alphanumeric characters. There are three types of 
-values, scalar values can contain anything except newlines. Trailing 
-whitespace will be trimmed unless the value is surrounded in double 
-quotes. eg
-
-  foo = Wizz
-  foo = "Wizz....    "
-
-Long lines can be split with a backslash character, without introducing
-newlines. Without double quotes, whitespace at beginning and end of lines
-will be trimmed eg
-
-  foo = This is a long \
-        line of text
-  foo = "This is a long " \
-        "line of text"
-
-Multi-line strings can be provided as 'HERE' documents, eg
-
-
-
-# %description -l pl
-# TODO
+This module provides an API for loading and saving of simple
+configuration file records. Entries in the configuration file are
+essentially key,value pairs, with the key and values separated by a
+single equals symbol. The key consists only of alphanumeric
+characters. There are three types of values, scalar values can contain
+anything except newlines. Trailing whitespace will be trimmed unless
+the value is surrounded in double quotes.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -68,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-cp -a examples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
