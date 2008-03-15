@@ -6,19 +6,20 @@
 %define	pdir	Config
 %define	pnam	Record
 Summary:	Config::Record - Configuration file access
-#Summary(pl):
+Summary(pl.UTF-8):	Config::Record - dostęp do plików konfiguracyjnych
 Name:		perl-Config-Record
 Version:	1.1.2
 Release:	0.1
-License:	GPL
+License:	GPL v2
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Config/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	3958d3b5221ddf65ba3143d28e0cd4e0
+URL:		http://search.cpan.org/dist/Config-Record/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(Test::Pod)
-BuildRequires:	perl(Test::Pod::Coverage)
+BuildRequires:	perl-Test-Pod
+BuildRequires:	perl-Test-Pod-Coverage
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,6 +32,14 @@ single equals symbol. The key consists only of alphanumeric
 characters. There are three types of values, scalar values can contain
 anything except newlines. Trailing whitespace will be trimmed unless
 the value is surrounded in double quotes.
+
+%description -l pl.UTF-8
+Ten moduł udostępnia API do odczytu i zapisu rekordów w prostych
+plikach konfiguracyjnych. Wpisy w pliku konfiguracyjnym to zasadniczo
+pary klucz=wartość. Klucz może zawierać tylko znaki alfanumeryczne. Są
+dostępne trzy rodzaje wartości, wartości skalarne mogą zawierać
+cokolwiek poza znakami nowej linii. Końcowe znaki odstępu są usuwane,
+chyba że wartość jest umieszczona między podwójnymi cudzysłowami.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -58,6 +67,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGES INSTALL README
 %{perl_vendorlib}/Config/*.pm
-#%{perl_vendorlib}/Config/Record
 %{_mandir}/man3/*
 %{_examplesdir}/%{name}-%{version}
