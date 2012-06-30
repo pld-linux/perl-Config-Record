@@ -9,8 +9,8 @@ Summary:	Config::Record - Configuration file access
 Summary(pl.UTF-8):	Config::Record - dostęp do plików konfiguracyjnych
 Name:		perl-Config-Record
 Version:	1.1.2
-Release:	0.1
-License:	GPL v2
+Release:	1
+License:	GPL v2+
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Config/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	3958d3b5221ddf65ba3143d28e0cd4e0
@@ -59,13 +59,14 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+%{__rm} $RPM_BUILD_ROOT%{perl_vendorlib}/Config/Record.pod
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES INSTALL README
-%{perl_vendorlib}/Config/*.pm
-%{_mandir}/man3/*
+%doc AUTHORS CHANGES README
+%{perl_vendorlib}/Config/Record.pm
+%{_mandir}/man3/Config::Record.3pm*
 %{_examplesdir}/%{name}-%{version}
